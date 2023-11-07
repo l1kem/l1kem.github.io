@@ -4,13 +4,50 @@
   
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2023/11/07/hello-world/"/>
-      <url>/2023/11/07/hello-world/</url>
+      <title>Xray基本使用</title>
+      <link href="/2023/11/08/tools/Untitled/"/>
+      <url>/2023/11/08/tools/Untitled/</url>
       
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Xray"><a href="#Xray" class="headerlink" title="Xray"></a>Xray</h1><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p><strong>爬虫爬取</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xray webscan --basic-crawler http://testphp.vulnweb.com --html-output vuln.html</span><br></pre></td></tr></table></figure><p><strong>被动扫描</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xray ws --listen 127.0.0.1:7777 --html-output proxy.html</span><br></pre></td></tr></table></figure><hr><h1 id="漏洞扫描"><a href="#漏洞扫描" class="headerlink" title="漏洞扫描"></a>漏洞扫描</h1><p><strong>漏洞扫描</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xray ws -u http://testphp.vulnweb.com --html-output report.html</span><br></pre></td></tr></table></figure><p><strong>批量poc</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xray ws -p /pentest/xray/pocs/\* --url-file target.txt --html-output report.html</span><br></pre></td></tr></table></figure><p><strong>指定poc</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xray ws -p <span class="string">&quot;./xxx.yml&quot;</span> -u http://example.com/?a=b</span><br></pre></td></tr></table></figure><p><strong>shiro</strong></p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">xray webscan --plugins shiro --url-file target.txt --html-output x.html</span><br></pre></td></tr></table></figure><hr><h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><p><strong>burp 转发给 xray</strong></p><p>xray 监听 127.0.0.1:7777</p><p>burp Upstream Proxy Servers 中配置 127.0.0.1 7777 即可转发</p><p><strong>转发给 burp 查看流量</strong></p><p>burp 监听 127.0.0.1:8080</p><p>config.yaml 中配置 proxy: “<a href="http://127.0.0.1:8080/">http://127.0.0.1:8080</a>“ ,在 burp 中查看流量即可</p>]]></content>
       
       
+      <categories>
+          
+          <category> tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞扫描 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>M1 Docker 运行amd64镜像</title>
+      <link href="/2023/11/07/macbook/M1-Docker-Arm/"/>
+      <url>/2023/11/07/macbook/M1-Docker-Arm/</url>
+      
+        <content type="html"><![CDATA[<p>如果你是Mac苹果电脑，在Docker上运行非arm架构镜像，则可以尝试如下解决方式。</p><p>启动命令加入 –platform linux&#x2F;amd64 即可。</p><p>例如：</p><blockquote><p> docker run -it –platform linux&#x2F;amd64 –name dgraph dgraph&#x2F;standalone:v21.03.0</p></blockquote><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311080000217.png" alt="e5308c9597464c68828588f0a9572b97-20221117161948010"></p><p><strong>实践尝试</strong></p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311080000218.png" alt="image-20221117162020909"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> macbook </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mac小技巧 </tag>
+            
+        </tags>
       
     </entry>
     
