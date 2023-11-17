@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>M系列芯片安装安卓模拟器</title>
+      <link href="/2023/11/18/macbook/20231118/"/>
+      <url>/2023/11/18/macbook/20231118/</url>
+      
+        <content type="html"><![CDATA[<p>使用Android Studio安装</p><p>官网下载：<a href="https://developer.android.google.cn/studio?hl=zh-cn">https://developer.android.google.cn/studio?hl=zh-cn</a></p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180015586.png" alt="image-20231118001525482"></p><p>安装好后一路next（中间需要安装sdk可能需要一点点魔法，设置一下代理）</p><p>进入后随便建一个项目</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180017290.png" alt="image-20231118001741270"></p><p>进去后如图所示</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180018136.png" alt="image-20231118001854117"></p><p>随便选择一个型号</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180019471.png" alt="image-20231118001917446"></p><p>找一个版本，例如安卓10，需要点击旁边的箭头下载</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180019767.png" alt="image-20231118001958741"></p><p>去配置文件<code>~/.zshrc</code>中添加如下代码</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安卓模拟器去除只读</span></span><br><span class="line"><span class="built_in">export</span> ANDROID_HOME=/Users/cybersd/Library/Android/sdk</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;<span class="variable">$ANDROID_HOME</span>/emulator:<span class="variable">$ANDROID_HOME</span>/tools:<span class="variable">$ANDROID_HOME</span>/tools/bin:<span class="variable">$ANDROID_HOME</span>/cmdline-tools/latest:<span class="variable">$ANDROID_HOME</span>/cmdline-tools/latest/bin:<span class="variable">$ANDROID_HOME</span>/platform-tools:<span class="variable">$PATH</span>&quot;</span></span><br></pre></td></tr></table></figure><p>去这个目录中<code>/Users/用户名/Library/Android/sdk/emulator</code></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#查看模拟器名称</span><br><span class="line">./emulator -list-avds</span><br><span class="line">#启动模拟器</span><br><span class="line">./emulator -avd &#x27;Pixel_6_Pro_API_29&#x27; -writable-system</span><br></pre></td></tr></table></figure><p>现在我们不需要打开Android Studio了，把这个命令打包成应用程序，使用mac自带的“自动操作”app进行，新建一个应用程序文稿</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180024120.png" alt="image-20231118002407097"></p><p>搜索shell</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180024537.png" alt="image-20231118002431513"></p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180025626.png" alt="image-20231118002520599"></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /Users/用户名/Library/Android/sdk/emulator &amp;&amp; ./emulator -avd &#x27;模拟器名称&#x27; -writable-system</span><br></pre></td></tr></table></figure><p>保存之后就会出现在启动台，之后就可以点击启动台的程序进入模拟器了</p><p>burpsuite导出一个证书</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180026227.png" alt="image-20231118002649198"></p><p>生成证书</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">openssl x509 -subject_hash_old -inform der -in burp.der</span><br><span class="line">9a5ba575</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIDqDCCApCgAwIBAgIFAINAaMEwDQYJKoZIhvcNAQELBQAwgYoxFDASBgNVBAYT</span><br><span class="line">C1BvcnRTd2lnZ2VyMRQwEgYDVQQIEwtQb3J0U3dpZ2dlcjEUMBIGA1UEBxMLUG9y</span><br><span class="line">dFN3aWdnZXIxFDASBgNVBAoTC1BvcnRTd2lnZ2VyMRcwFQYDVQQLEw5Qb3J0U3dp</span><br><span class="line">Z2dlciBDQTEXMBUGA1UEAxMOUG9ydFN3aWdnZXIgQ0EwHhcNMTQwODE1MTUyODA1</span><br><span class="line">WhcNMzMwODE1MTUyODA1WjCBijEUMBIGA1UEBhMLUG9ydFN3aWdnZXIxFDASBgNV</span><br><span class="line">BAgTC1BvcnRTd2lnZ2VyMRQwEgYDVQQHEwtQb3J0U3dpZ2dlcjEUMBIGA1UEChML</span><br><span class="line">……………………………………</span><br><span class="line"></span><br><span class="line">#重命名成这串数字</span><br><span class="line">mv burp.der 9a5ba575.0</span><br></pre></td></tr></table></figure><p>burpsuite设置一下代理，使用本机IP，不要使用127.0.0.1</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180029459.png" alt="image-20231118002959432"></p><p>然后打开安卓模拟器备用着</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /Users/cybersd/Library/Android/sdk/platform-tools</span><br><span class="line">#模拟器必须开机后进行下列操作，每次重新打开都要执行一下</span><br><span class="line">./adb root</span><br><span class="line">./adb remount</span><br><span class="line">#把证书倒入到模拟器中</span><br><span class="line">./adb push /Users/用户名/Desktop/9a5ba575.0 /system/etc/security/cacerts/9a5ba575.0</span><br></pre></td></tr></table></figure><p>点一下连接wifi</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180033627.png" alt="image-20231118003321593"></p><p>模拟器内设置代理</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180034277.png" alt="image-20231118003412249"></p><p>测试一下</p><p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180037196.png" alt="image-20231118003701157"></p><p>注意：每次重启模拟器之后都要执行一下倒入证书的操作哦</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> macbook </category>
+          
+          <category> tools </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 教程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Xray基本使用</title>
       <link href="/2023/11/08/tools/Xray/"/>
       <url>/2023/11/08/tools/Xray/</url>
