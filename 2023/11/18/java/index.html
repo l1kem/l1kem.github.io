@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java开发(长篇) | 竹叶小栈</title><meta name="author" content="Cybersd"><meta name="copyright" content="Cybersd"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1、Java 语法基础1.1 注释1.1.1 单行注释&#x2F;&#x2F;    开发标准中注明单行注释需在被注释语句上方另起一行,使用&#x2F;&#x2F;注释  1.1.2 多行注释&#x2F;**&#x2F; 使用频率不高,通常用于解释一段代码的作用 1.1.3 文档注释&#x2F;**    &#x2F;**回车后IDEA自动补全下方的*&#x2F;,例如   public class Demo&#123;    &#x2F;**    * main 方法作为程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java开发(长篇)">
+<meta property="og:url" content="http://cybersd.cn/2023/11/18/java/index.html">
+<meta property="og:site_name" content="竹叶小栈">
+<meta property="og:description" content="1、Java 语法基础1.1 注释1.1.1 单行注释&#x2F;&#x2F;    开发标准中注明单行注释需在被注释语句上方另起一行,使用&#x2F;&#x2F;注释  1.1.2 多行注释&#x2F;**&#x2F; 使用频率不高,通常用于解释一段代码的作用 1.1.3 文档注释&#x2F;**    &#x2F;**回车后IDEA自动补全下方的*&#x2F;,例如   public class Demo&#123;    &#x2F;**    * main 方法作为程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181757640.png">
+<meta property="article:published_time" content="2023-11-18T08:04:40.000Z">
+<meta property="article:modified_time" content="2023-11-18T09:58:10.570Z">
+<meta property="article:author" content="Cybersd">
+<meta property="article:tag" content="cybersd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181757640.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://cybersd.cn/2023/11/18/java/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java开发(长篇)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-18 17:58:10'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/favicon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/macbook/"><span> MacBook</span></a></li><li><a class="site-page child" href="/categories/tools/"><span> 网安工具</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181757640.png')"><nav id="nav"><span id="blog-info"><a href="/" title="竹叶小栈"><span class="site-name">竹叶小栈</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/macbook/"><span> MacBook</span></a></li><li><a class="site-page child" href="/categories/tools/"><span> 网安工具</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java开发(长篇)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-18T08:04:40.000Z" title="发表于 2023-11-18 16:04:40">2023-11-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-18T09:58:10.570Z" title="更新于 2023-11-18 17:58:10">2023-11-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java开发(长篇)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1、Java-语法基础"><a href="#1、Java-语法基础" class="headerlink" title="1、Java 语法基础"></a>1、Java 语法基础</h1><h2 id="1-1-注释"><a href="#1-1-注释" class="headerlink" title="1.1 注释"></a>1.1 注释</h2><h3 id="1-1-1-单行注释"><a href="#1-1-1-单行注释" class="headerlink" title="1.1.1 单行注释"></a>1.1.1 单行注释</h3><p><code>//</code></p>
+<blockquote>
+<p>  开发标准中注明单行注释需在被注释语句上方另起一行,使用&#x2F;&#x2F;注释</p>
+</blockquote>
+<h3 id="1-1-2-多行注释"><a href="#1-1-2-多行注释" class="headerlink" title="1.1.2 多行注释"></a>1.1.2 多行注释</h3><p><code>/**/</code></p>
+<p>使用频率不高,通常用于解释一段代码的作用</p>
+<h3 id="1-1-3-文档注释"><a href="#1-1-3-文档注释" class="headerlink" title="1.1.3 文档注释"></a>1.1.3 文档注释</h3><p><code>/**</code></p>
+<blockquote>
+<p>  <code>/**</code>回车后IDEA自动补全下方的<code>*/</code>,例如</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo</span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * main 方法作为程序的入口</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> args 参数</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>javadoc</code> 生成代码文件</p>
+<p>在当前类目录下执行<code>javadoc BaseDao.java -encoding utf-8</code>,会生成一些html js文件, 打开其中的index.html查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">正在加载源文件BaseDao.java...</span><br><span class="line">正在构造 Javadoc 信息...</span><br><span class="line">标准 Doclet 版本 11.0.20</span><br><span class="line">正在构建所有程序包和类的树...</span><br><span class="line">正在生成./cn/cybersd/dao/BaseDao.html...</span><br><span class="line">正在生成./cn/cybersd/dao/package-summary.html...</span><br><span class="line">正在生成./cn/cybersd/dao/package-tree.html...</span><br><span class="line">正在生成./constant-values.html...</span><br><span class="line">正在构建所有程序包和类的索引...</span><br><span class="line">正在生成./overview-tree.html...</span><br><span class="line">正在生成./index-all.html...</span><br><span class="line">正在构建所有类的索引...</span><br><span class="line">正在生成./allclasses-index.html...</span><br><span class="line">正在生成./allpackages-index.html...</span><br><span class="line">正在生成./deprecated-list.html...</span><br><span class="line">正在构建所有类的索引...</span><br><span class="line">正在生成./allclasses.html...</span><br><span class="line">正在生成./allclasses.html...</span><br><span class="line">正在生成./index.html...</span><br><span class="line">正在生成./help-doc.html...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  文档注释的注意事项:</p>
+<ol>
+<li>javadoc只能为public和protected修饰的字段方法和类生成文档, 如果不是public的话,javadoc会执行失败. 另外default和private会被忽视</li>
+<li>文档注释中不要使用标题标签, 容易发送冲突</li>
+<li>文档注释中可以插入一些@注解, 比如@version版本号 @author作者标识符</li>
+</ol>
+</blockquote>
+<h3 id="1-1-4-注释规约"><a href="#1-1-4-注释规约" class="headerlink" title="1.1.4 注释规约"></a>1.1.4 注释规约</h3><ol>
+<li>类 字段 方法必须使用文档注释</li>
+<li>所有的抽象方法包括接口中的方法必须要用javadoc注释,除了返回值 参数 异常说明外, 还必须指出该方法做了什么, 实现了什么功能</li>
+<li>所有类必须添加创建者和创建日期, 可以在IDEA中创建模板</li>
+</ol>
+<p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181631587.png" alt="image-20231118163127521"></p>
+<ol start="4">
+<li>所有枚举类型字段必须要有注释, 说明每个数据项的用途</li>
+<li>代码修改的同时, 注释也要进行相应的修改</li>
+</ol>
+<h2 id="1-2-数据类型"><a href="#1-2-数据类型" class="headerlink" title="1.2 数据类型"></a>1.2 数据类型</h2><blockquote>
+<p>  “Java 是一种静态类型的编程语言，这意味着所有变量必须在使用之前声明好”</p>
+</blockquote>
+<p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181635110.png" alt="image-20231118163511057"></p>
+<h3 id="1-2-1-比特和字节"><a href="#1-2-1-比特和字节" class="headerlink" title="1.2.1 比特和字节"></a>1.2.1 比特和字节</h3><ol>
+<li>bit(比特) 简写成”b”, 二进制的一位就是1比特,也就是比特要么是0要么是1</li>
+<li>Byte(字节) 通常来说一个英文字符是1字节,一个中文字符就是2字节,它与比特的转换为: 1Byte &#x3D; 8bit</li>
+<li>1KB &#x3D; 1024Byte   1MB &#x3D; 1024KB  ……</li>
+</ol>
+<h3 id="1-2-2-基本数据类型"><a href="#1-2-2-基本数据类型" class="headerlink" title="1.2.2 基本数据类型"></a>1.2.2 基本数据类型</h3><ol>
+<li>boolean(布尔)</li>
+</ol>
+<p>用于存储true和false,也就是真和假</p>
+<ol start="2">
+<li>byte(字节)</li>
+</ol>
+<p>字节是有符号的,取值范围为:-128到127包含两者</p>
+<ol start="3">
+<li>short</li>
+</ol>
+<p>范围:-32768到32767包含两者 </p>
+<blockquote>
+<p>  short类型在实际开发中用的比较少,通常使用int即可</p>
+</blockquote>
+<ol start="4">
+<li>int(整数型)</li>
+</ol>
+<p>取值范围:-2147483648到2147483647包含两者</p>
+<blockquote>
+<p>  如果没有特殊需求,整型数据就用int</p>
+</blockquote>
+<ol start="5">
+<li>long(长整型)</li>
+</ol>
+<p>取值范围-2^63到2^63-1包含两者,如果int存储不下,就用long</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">100000000000L</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  为了和int作区分,long在声明的时候尾部要带上”L”</p>
+</blockquote>
+<ol start="6">
+<li>float(单精度浮点数)</li>
+</ol>
+<p>取值范围:1.4E-45到3.4E+38, float不适合用于精确的数值,例如金额</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">float</span> <span class="variable">f</span> <span class="operator">=</span> <span class="number">3.14159f</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>double(双精度浮点数)</li>
+</ol>
+<p>取值范围:±4.9E-324到±1.7976931348623157E308</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">myDouble</span> <span class="operator">=</span> <span class="number">3.141592653589793</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  在进行金融计算或需要精确小数计算的场景中，可以使用 BigDecimal 类来避免浮点数舍入误差。BigDecimal 可以表示一个任意大小且精度完全准确的浮点数</p>
+<p>  在实际开发中，如果不是特别大的金额（精确到 0.01 元，也就是一分钱），一般建议乘以 100 转成整型进行处理</p>
+</blockquote>
+<ol start="8">
+<li>char</li>
+</ol>
+<p>取值范围:0到65535,用于处理Unicode字符,占2字节存储空间</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">char</span> = letterA =<span class="string">&#x27;A&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  字符字面量应该用单引号（’’）包围，而不是双引号（””），因为双引号表示字符串字面量</p>
+</blockquote>
+<p><strong>扩展:</strong></p>
+<ol>
+<li>单精度和双精度</li>
+</ol>
+<p>单精度是1位符号位,8位指数,23位小数. 单精度通常占用4字节存储空间,精度大约6到9位有效数字</p>
+<p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181702258.png" alt="image-20231118170206231"></p>
+<p>双精度是1位符号位,11位指数,52位小数. 双精度通常占用8字节存储空间,精度大约15到17位有效数字</p>
+<p><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181702898.png" alt="image-20231118170216879"></p>
+<blockquote>
+<p>  一个数由若干位数字组成，其中影响测量精度的数字称作<strong>有效数字</strong>，也称有效数位。有效数字指科学计算中用以表示一个浮点数精度的那些数字。一般地，指一个用小数形式表示的浮点数中，从第一个非零的数字算起的所有数字。如 1.24 和 0.00124 的有效数字都有 3 位</p>
+</blockquote>
+<ol start="2">
+<li>int和chat类型转换</li>
+</ol>
+<ul>
+<li>强制类型转换</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">value_int</span> <span class="operator">=</span> <span class="number">65</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">value_char</span> <span class="operator">=</span> (<span class="type">char</span>) value_int;</span><br><span class="line"><span class="comment">//输出A</span></span><br><span class="line">System.out.println(value_char);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Character.forDigit()</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">radix</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">value_int</span> <span class="operator">=</span> <span class="number">6</span>;</span><br><span class="line"><span class="comment">//radix=10 表示十进制</span></span><br><span class="line"><span class="type">char</span> <span class="variable">value_char</span> <span class="operator">=</span> Character.forDigit(value_int, radix);</span><br><span class="line">System.out.println(value_char)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Integer</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">value_int</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="comment">//使用 int 的包装器类型 Integer 的 toString() 方法+String 的 charAt() 方法转成 char</span></span><br><span class="line"><span class="type">char</span> <span class="variable">value_char</span> <span class="operator">=</span> Integer.toString(value_int).charAt(<span class="number">0</span>);</span><br><span class="line">System.out.println(value_char);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>char转int(自动类型转换)</li>
+</ul>
+<p><code>int a = &#39;a&#39;;</code></p>
+<ol start="3">
+<li>包装器类型</li>
+</ol>
+<blockquote>
+<p>  包装器类型（Wrapper Types）是 Java 中的一种特殊类型，用于将基本数据类型（如 int、float、char 等）转换为对应的对象类型</p>
+</blockquote>
+<h3 id="1-2-3-引用数据类型"><a href="#1-2-3-引用数据类型" class="headerlink" title="1.2.3 引用数据类型"></a>1.2.3 引用数据类型</h3><p>String类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">basicGrammar</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String a;</span><br><span class="line">    <span class="keyword">static</span> String b;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">basicGrammar</span> <span class="variable">lv</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">basicGrammar</span>();</span><br><span class="line">        <span class="comment">//null</span></span><br><span class="line">        System.out.println(lv.a);</span><br><span class="line">        <span class="comment">//null</span></span><br><span class="line">        System.out.println(b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://cybersd.cn">Cybersd</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://cybersd.cn/2023/11/18/java/">http://cybersd.cn/2023/11/18/java/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://cybersd.cn" target="_blank">竹叶小栈</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181757640.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/11/18/macbook/20231118/" title="M系列芯片安装安卓模拟器"><img class="cover" src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180043701.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">M系列芯片安装安卓模拟器</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/favicon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Cybersd</div><div class="author-info__description">我们一起去偷月亮吧</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1%E3%80%81Java-%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80"><span class="toc-text">1、Java 语法基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1 注释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.1 单行注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.2 多行注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-%E6%96%87%E6%A1%A3%E6%B3%A8%E9%87%8A"><span class="toc-text">1.1.3 文档注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-4-%E6%B3%A8%E9%87%8A%E8%A7%84%E7%BA%A6"><span class="toc-text">1.1.4 注释规约</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.2 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E6%AF%94%E7%89%B9%E5%92%8C%E5%AD%97%E8%8A%82"><span class="toc-text">1.2.1 比特和字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.2.2 基本数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-3-%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.2.3 引用数据类型</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/11/18/java/" title="Java开发(长篇)"><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311181757640.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java开发(长篇)"/></a><div class="content"><a class="title" href="/2023/11/18/java/" title="Java开发(长篇)">Java开发(长篇)</a><time datetime="2023-11-18T08:04:40.000Z" title="发表于 2023-11-18 16:04:40">2023-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/18/macbook/20231118/" title="M系列芯片安装安卓模拟器"><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311180043701.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="M系列芯片安装安卓模拟器"/></a><div class="content"><a class="title" href="/2023/11/18/macbook/20231118/" title="M系列芯片安装安卓模拟器">M系列芯片安装安卓模拟器</a><time datetime="2023-11-17T16:13:42.000Z" title="发表于 2023-11-18 00:13:42">2023-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/08/tools/Xray/" title="Xray基本使用"><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311080033634.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Xray基本使用"/></a><div class="content"><a class="title" href="/2023/11/08/tools/Xray/" title="Xray基本使用">Xray基本使用</a><time datetime="2023-11-07T16:00:00.000Z" title="发表于 2023-11-08 00:00:00">2023-11-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/07/macbook/M1-Docker-Arm/" title="M1 Docker 运行amd64镜像"><img src="https://blog-1303815224.cos.ap-beijing.myqcloud.com/202311080034096.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="M1 Docker 运行amd64镜像"/></a><div class="content"><a class="title" href="/2023/11/07/macbook/M1-Docker-Arm/" title="M1 Docker 运行amd64镜像">M1 Docker 运行amd64镜像</a><time datetime="2023-11-07T15:00:00.000Z" title="发表于 2023-11-07 23:00:00">2023-11-07</time></div></div></div></div></div></div></main><footer id="footer" style="background: rgb(0,0,0)"><div id="footer-wrap"><div class="copyright">&copy;2023 By Cybersd</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
